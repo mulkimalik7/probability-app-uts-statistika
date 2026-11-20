@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aplikasi pembelajaran dan kalkulator probabilitas untuk project UTS Statistika.">
+  <title>Probability App | UTS Statistika</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#dashboard" aria-label="Probability App beranda">
+        <span class="brand-mark">P</span>
+        <span><strong>Probability App</strong><small>UTS Statistika</small></span>
+      </a>
+      <nav class="primary-nav" aria-label="Navigasi utama">
+        <a class="nav-link active" href="#dashboard" aria-current="page">Dashboard</a>
+        <a class="nav-link" href="#probabilitas-dasar">Probabilitas Dasar</a>
+        <a class="nav-link" href="#bersyarat">Probabilitas Bersyarat &amp; Bayes</a>
+        <a class="nav-link" href="#panduan">Panduan</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+      <section id="dashboard" class="page-section hero-section">
+        <p class="eyebrow">PROJECT UTS STATISTIKA</p>
+        <h1>Kalkulator Probabilitas</h1>
+        <p class="lead">Aplikasi untuk menghitung peluang kejadian, probabilitas bersyarat, dan Teorema Bayes dengan rumus serta langkah perhitungan yang mudah dipahami.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#probabilitas-dasar">Mulai menghitung</a>
+          <a class="button button-secondary" href="#panduan">Lihat panduan</a>
+        </div>
+        <div class="hero-meta"><span>6 kalkulator dasar</span><span>5 kalkulator bersyarat &amp; Bayes</span><span>Desimal titik atau koma</span></div>
+      </section>
+
+      <section id="probabilitas-dasar" class="page-section">
+        <div class="section-heading"><div><p class="eyebrow">MODUL 01</p><h2>Probabilitas Dasar</h2><p>Pilih satu jenis perhitungan untuk membuka form yang sesuai.</p></div></div>
+        <div class="calculator-module" data-calculator-module>
+          <div class="calculator-switch" role="group" aria-label="Pilih kalkulator probabilitas dasar">
+            <button class="switch-button is-active" type="button" data-show-panel="event-probability" aria-pressed="true">P(A)</button>
+            <button class="switch-button" type="button" data-show-panel="complement" aria-pressed="false">Komplemen</button>
+            <button class="switch-button" type="button" data-show-panel="union" aria-pressed="false">Gabungan</button>
+            <button class="switch-button" type="button" data-show-panel="intersection" aria-pressed="false">Irisan</button>
+            <button class="switch-button" type="button" data-show-panel="mutually-exclusive" aria-pressed="false">Saling lepas</button>
+            <button class="switch-button" type="button" data-show-panel="independent" aria-pressed="false">Independen</button>
+          </div>
+          <article class="calculator-card calculator-panel" data-calculator-panel="event-probability">
+            <h3>1. Probabilitas suatu kejadian P(A)</h3>
+            <p class="formula">P(A) = n(A) / n(S)</p>
+            <form data-calculator="event-probability">
+              <label>Jumlah kejadian yang diinginkan, n(A)<input name="favourable" type="number" min="0" step="1" required placeholder="Contoh: 3"></label>
+              <label>Jumlah seluruh ruang sampel, n(S)<input name="sampleSpace" type="number" min="1" step="1" required placeholder="Contoh: 10"></label>
+              <button class="button button-primary" type="submit">Hitung P(A)</button>
+              <button class="button button-secondary" type="reset">Reset</button>
+            </form>
+            <div class="result" aria-live="polite" hidden></div>
+          </article>
+
+          <article class="calculator-card calculator-panel" data-calculator-panel="complement" hidden>
+            <h3>2. Probabilitas komplemen P(A')</h3>
+            <p class="formula">P(A') = 1 − P(A)</p>
+            <form data-calculator="complement">
+              <label>Probabilitas P(A)<input name="pA" type="text" inputmode="decimal" required placeholder="Contoh: 0.3 atau 0,3"></label>
+              <button class="button button-primary" type="submit">Hitung komplemen</button>
+              <button class="button button-secondary" type="reset">Reset</button>
+            </form>
+            <div class="result" aria-live="polite" hidden></div>
+          </article>
+
+          <article class="calculator-card calculator-panel" data-calculator-panel="union" hidden>
+            <h3>3. Probabilitas gabungan P(A ∪ B)</h3>
+            <p class="formula">P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</p>
+            <form data-calculator="union">
+              <label>Probabilitas P(A)<input name="pA" type="text" inputmode="decimal" required placeholder="Contoh: 0,3 atau 0.3"></label>
+              <label>Probabilitas P(B)<input name="pB" type="text" inputmode="decimal" required placeholder="Contoh: 0,4 atau 0.4"></label>
+              <label>Probabilitas irisan P(A ∩ B)<input name="pIntersection" type="text" inputmode="decimal" required placeholder="Contoh: 0,1 atau 0.1"></label>
+              <button class="button button-primary" type="submit">Hitung gabungan</button>
+              <button class="button button-secondary" type="reset">Reset</button>
+            </form>
+            <div class="result" aria-live="polite" hidden></div>
+          </article>
+
+          <article class="calculator-card calculator-panel" data-calculator-panel="intersection" hidden>
+            <h3>4. Probabilitas irisan P(A ∩ B)</h3>
+            <p class="formula">P(A ∩ B) = P(A) + P(B) − P(A ∪ B)</p>
+            <form data-calculator="intersection">
+              <label>Probabilitas P(A)<input name="pA" type="text" inputmode="decimal" required placeholder="Contoh: 0,3 atau 0.3"></label>
+              <label>Probabilitas P(B)<input name="pB" type="text" inputmode="decimal" required placeholder="Contoh: 0,4 atau 0.4"></label>
+              <label>Probabilitas gabungan P(A ∪ B)<input name="pUnion" type="text" inputmode="decimal" required placeholder="Contoh: 0,6 atau 0.6"></label>
+              <button class="button button-primary" type="submit">Hitung irisan</button>
+              <button class="button button-secondary" type="reset">Reset</button>
+            </form>
+            <div class="result" aria-live="polite" hidden></div>
+          </article>
+
+          <article class="calculator-card calculator-panel" data-calculator-panel="mutually-exclusive" hidden>
+            <h3>5. Kejadian saling lepas</h3>
+            <p class="formula">P(A ∪ B) = P(A) + P(B)</p>
+            <form data-calculator="mutually-exclusive">
+              <label>Probabilitas P(A)<input name="pA" type="text" inputmode="decimal" required placeholder="Contoh: 0,3 atau 0.3"></label>
+              <label>Probabilitas P(B)<input name="pB" type="text" inputmode="decimal" required placeholder="Contoh: 0,4 atau 0.4"></label>
+              <button class="button button-primary" type="submit">Hitung kejadian saling lepas</button>
+              <button class="button button-secondary" type="reset">Reset</button>
+            </form>
+            <div class="result" aria-live="polite" hidden></div>
+          </article>
+
+          <article class="calculator-card calculator-panel" data-calculator-panel="independent" hidden>
+            <h3>6. Kejadian independen</h3>
+            <p class="formula">P(A ∩ B) = P(A) × P(B)</p>
+            <form data-calculator="independent">
+              <label>Probabilitas P(A)<input name="pA" type="text" inputmode="decimal" required placeholder="Contoh: 0,3 atau 0.3"></label>
+              <label>Probabilitas P(B)<input name="pB" type="text" inputmode="decimal" required placeholder="Contoh: 0,4 atau 0.4"></label>
+              <button class="button button-primary" type="submit">Hitung kejadian independen</button>
+              <button class="button button-secondary" type="reset">Reset</button>
+            </form>
+            <div class="result" aria-live="polite" hidden></div>
+          </article>
+        </div>
+        </div>
+      </section>
+
+      <section id="bersyarat" class="page-section">
+        <div class="section-heading"><div><p class="eyebrow">MODUL 02</p><h2>Probabilitas Bersyarat &amp; Bayes</h2><p>Pilih kalkulator untuk menghitung peluang bersyarat, Bayes, atau probabilitas total.</p></div></div>
+        <div class="calculator-module" data-calculator-module>
+          <div class="calculator-switch" role="group" aria-label="Pilih kalkulator bersyarat dan Bayes">
+            <button class="switch-button is-active" type="button" data-show-panel="conditional" aria-pressed="true">P(A|B)</button>
+            <button class="switch-button" type="button" data-show-panel="general-multiplication" aria-pressed="false">Aturan perkalian</button>
+            <button class="switch-button" type="button" data-show-panel="bayes-general" aria-pressed="false">Bayes umum</button>
+            <button class="switch-button" type="button" data-show-panel="total-probability" aria-pressed="false">Probabilitas total</button>
+            <button class="switch-button" type="button" data-show-panel="phishing" aria-pressed="false">Kasus phishing</button>
+          </div>
+        <article class="calculator-card calculator-panel" data-calculator-panel="conditional">
+          <p class="formula">P(A|B) = P(A ∩ B) / P(B)</p>
+          <form data-calculator="conditional">
+            <label>Probabilitas irisan P(A ∩ B)<input name="pIntersection" type="text" inputmode="decimal" required placeholder="Contoh: 0.2 atau 0,2"></label>
+            <label>Probabilitas P(B)<input name="pB" type="text" inputmode="decimal" required placeholder="Contoh: 0.5 atau 0,5"></label>
+            <button class="button button-primary" type="submit">Hitung P(A|B)</button>
+            <button class="button button-secondary" type="reset">Reset</button>
+          </form>
+          <div class="result" aria-live="polite" hidden></div>
+        </article>
+        <article class="calculator-card calculator-panel" data-calculator-panel="general-multiplication" hidden>
+          <h3>Kalkulator Aturan Perkalian Umum</h3>
+          <p class="formula">P(A ∩ B) = P(A) × P(B|A)</p>
+          <p>Contoh materi: 5 dari 20 akun telah diretas. Jika akun pertama diretas, peluang akun kedua diretas tanpa pengembalian adalah 4/19.</p>
+          <form data-calculator="general-multiplication">
+            <label>Probabilitas kejadian pertama P(A)<input name="pA" type="text" inputmode="decimal" required placeholder="Contoh: 0,25 atau 0.25"></label>
+            <label>Probabilitas kejadian kedua setelah A terjadi P(B|A)<input name="pBGivenA" type="text" inputmode="decimal" required placeholder="Contoh: 0,2 atau 0.2"></label>
+            <button class="button button-primary" type="submit">Hitung</button>
+            <button class="button button-secondary" type="reset">Reset</button>
+          </form>
+          <div class="result" aria-live="polite" hidden></div>
+        </article>
+        <article class="calculator-card calculator-panel" data-calculator-panel="bayes-general" hidden>
+          <h3>Kalkulator Bayes umum</h3>
+          <p class="formula">P(A|B) = [P(B|A) × P(A)] / P(B)</p>
+          <form data-calculator="bayes-general">
+            <label>Probabilitas awal P(A)<input name="prior" type="text" inputmode="decimal" required placeholder="Contoh: 0.2 atau 0,2"></label>
+            <label>Likelihood P(B|A)<input name="likelihood" type="text" inputmode="decimal" required placeholder="Contoh: 0.9 atau 0,9"></label>
+            <label>Probabilitas bukti P(B)<input name="evidence" type="text" inputmode="decimal" required placeholder="Contoh: 0.3 atau 0,3"></label>
+            <button class="button button-primary" type="submit">Hitung Teorema Bayes</button>
+            <button class="button button-secondary" type="reset">Reset</button>
+          </form>
+          <div class="result" aria-live="polite" hidden></div>
+        </article>
+
+        <article class="calculator-card calculator-panel" data-calculator-panel="total-probability" hidden>
+          <h3>Kalkulator Hukum Probabilitas Total</h3>
+          <p class="formula">P(B) = Σ P(B|Ai) × P(Ai)</p>
+          <p>Gunakan kelompok yang saling lepas dan mencakup seluruh ruang sampel. Total seluruh proporsi P(Ai) harus sama dengan 1.</p>
+          <form data-calculator="total-probability">
+            <div class="total-probability-groups" data-probability-groups>
+              <fieldset class="total-probability-group" data-probability-group>
+                <legend>Subnet A</legend>
+                <label>Nama kelompok (Ai)<input type="text" name="groupName" data-group-name value="Subnet A" required></label>
+                <label>Proporsi kelompok P(Ai)<input type="text" name="groupProportion" data-group-proportion inputmode="decimal" required placeholder="Contoh: 0,5 atau 0.5"></label>
+                <label>Probabilitas P(B|Ai)<input type="text" name="groupConditional" data-group-conditional inputmode="decimal" required placeholder="Contoh: 0,02 atau 0.02"></label>
+                <button class="button button-secondary" type="button" data-remove-probability-group>Hapus</button>
+              </fieldset>
+              <fieldset class="total-probability-group" data-probability-group>
+                <legend>Subnet B</legend>
+                <label>Nama kelompok (Ai)<input type="text" name="groupName" data-group-name value="Subnet B" required></label>
+                <label>Proporsi kelompok P(Ai)<input type="text" name="groupProportion" data-group-proportion inputmode="decimal" required placeholder="Contoh: 0,5 atau 0.5"></label>
+                <label>Probabilitas P(B|Ai)<input type="text" name="groupConditional" data-group-conditional inputmode="decimal" required placeholder="Contoh: 0,02 atau 0.02"></label>
+                <button class="button button-secondary" type="button" data-remove-probability-group>Hapus</button>
+              </fieldset>
+              <fieldset class="total-probability-group" data-probability-group>
+                <legend>Subnet C</legend>
+                <label>Nama kelompok (Ai)<input type="text" name="groupName" data-group-name value="Subnet C" required></label>
+                <label>Proporsi kelompok P(Ai)<input type="text" name="groupProportion" data-group-proportion inputmode="decimal" required placeholder="Contoh: 0,5 atau 0.5"></label>
+                <label>Probabilitas P(B|Ai)<input type="text" name="groupConditional" data-group-conditional inputmode="decimal" required placeholder="Contoh: 0,02 atau 0.02"></label>
+                <button class="button button-secondary" type="button" data-remove-probability-group>Hapus</button>
+              </fieldset>
+            </div>
+            <template data-probability-group-template>
+              <fieldset class="total-probability-group" data-probability-group>
+                <legend></legend>
+                <label>Nama kelompok (Ai)<input type="text" name="groupName" data-group-name required></label>
+                <label>Proporsi kelompok P(Ai)<input type="text" name="groupProportion" data-group-proportion inputmode="decimal" required placeholder="Contoh: 0,5 atau 0.5"></label>
+                <label>Probabilitas P(B|Ai)<input type="text" name="groupConditional" data-group-conditional inputmode="decimal" required placeholder="Contoh: 0,02 atau 0.02"></label>
+                <button class="button button-secondary" type="button" data-remove-probability-group>Hapus</button>
+              </fieldset>
+            </template>
+            <button class="button button-secondary" type="button" data-add-probability-group>Tambah Kelompok</button>
+            <button class="button button-primary" type="submit">Hitung</button>
+            <button class="button button-secondary" type="reset">Reset</button>
+          </form>
+          <div class="result" aria-live="polite" hidden></div>
+        </article>
+
+        <article class="calculator-card calculator-panel" data-calculator-panel="phishing" hidden>
+          <div class="case-heading"><div><p class="eyebrow">CONTOH KASUS DARI SOAL UTS</p><h3>Deteksi Email Phishing</h3></div><span class="case-tag">Bayes</span></div>
+          <p>Masukkan prevalensi phishing, sensitivitas deteksi, dan false positive. Nilai awal mengikuti contoh pada naskah UTS dan masih bisa diubah.</p>
+          <form data-calculator="phishing">
+            <label>Prevalensi email phishing (%)<input name="prevalence" type="text" inputmode="decimal" value="8" required></label>
+            <label>Sensitivitas deteksi (%)<input name="sensitivity" type="text" inputmode="decimal" value="92" required></label>
+            <label>False positive (%)<input name="falsePositive" type="text" inputmode="decimal" value="3" required></label>
+            <button class="button button-primary" type="submit">Hitung kasus phishing</button>
+            <button class="button button-secondary" type="reset">Reset</button>
+          </form>
+          <div class="result" aria-live="polite" hidden></div>
+        </article>
+        </div>
+      </section>
+
+      <section id="panduan" class="page-section">
+        <div class="section-heading"><div><p class="eyebrow">BANTUAN</p><h2>Panduan Penggunaan</h2><p>Petunjuk singkat untuk menggunakan kalkulator.</p></div></div>
+        <ol class="guide-steps">
+          <li><strong>Pilih metode.</strong> Gunakan pilihan kalkulator pada modul yang sesuai.</li>
+          <li><strong>Masukkan nilai.</strong> Probabilitas memakai desimal 0–1; kasus phishing memakai persen 0–100. Titik dan koma sama-sama didukung.</li>
+          <li><strong>Hitung dan periksa.</strong> Baca hasil, rumus, interpretasi, dan buka langkah perhitungan jika diperlukan.</li>
+          <li><strong>Reset atau ganti metode.</strong> Reset mengembalikan form; memilih metode lain menghapus hasil sebelumnya tanpa menghapus nilai form.</li>
+        </ol>
+        <p class="guide-note">Pastikan asumsi antar-kejadian dan pembagian kelompok sesuai dengan data yang digunakan.</p>
+      </section>
+
+      <footer class="footer"><span>Probability App · Project UTS Statistika</span><span>HTML · CSS · JavaScript</span></footer>
+  </main>
+</body>
+</html>
