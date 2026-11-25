@@ -120,7 +120,6 @@
             <div class="result" aria-live="polite" hidden></div>
           </article>
         </div>
-        </div>
       </section>
 
       <section id="bersyarat" class="page-section">
@@ -134,6 +133,7 @@
             <button class="switch-button" type="button" data-show-panel="phishing" aria-pressed="false">Kasus phishing</button>
           </div>
         <article class="calculator-card calculator-panel" data-calculator-panel="conditional">
+          <h3>Kalkulator Probabilitas Bersyarat P(A|B)</h3>
           <p class="formula">P(A|B) = P(A ∩ B) / P(B)</p>
           <form data-calculator="conditional">
             <label>Probabilitas irisan P(A ∩ B)<input name="pIntersection" type="text" inputmode="decimal" required placeholder="Contoh: 0.2 atau 0,2"></label>
@@ -146,7 +146,7 @@
         <article class="calculator-card calculator-panel" data-calculator-panel="general-multiplication" hidden>
           <h3>Kalkulator Aturan Perkalian Umum</h3>
           <p class="formula">P(A ∩ B) = P(A) × P(B|A)</p>
-          <p>Contoh materi: 5 dari 20 akun telah diretas. Jika akun pertama diretas, peluang akun kedua diretas tanpa pengembalian adalah 4/19.</p>
+          <p>Contoh materi: 5 dari 20 akun telah diretas (P(A) = 5/20 = 0,25). Jika akun pertama diretas, peluang akun kedua diretas tanpa pengembalian adalah 4/19 ≈ 0,2105263158. Masukkan nilai dalam bentuk desimal (bukan pecahan), baik menggunakan pemisah titik (.) maupun koma (,).</p>
           <form data-calculator="general-multiplication">
             <label>Probabilitas kejadian pertama P(A)<input name="pA" type="text" inputmode="decimal" required placeholder="Contoh: 0,25 atau 0.25"></label>
             <label>Probabilitas kejadian kedua setelah A terjadi P(B|A)<input name="pBGivenA" type="text" inputmode="decimal" required placeholder="Contoh: 0,2 atau 0.2"></label>

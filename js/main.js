@@ -34,6 +34,10 @@ for (const form of document.querySelectorAll('form[data-calculator]')) {
     } else {
       favourableInput.removeAttribute('max');
     }
+
+    if (favourableInput.value.trim() !== '' && favourableInput.validity.valid) {
+      favourableInput.removeAttribute('aria-invalid');
+    }
   };
 
   if (form.dataset.calculator === 'total-probability') {
@@ -127,6 +131,11 @@ for (const form of document.querySelectorAll('form[data-calculator]')) {
         }));
       }
       const result = calculate(values);
+      form.querySelectorAll('[aria-invalid]').forEach((input) => {
+        if (input.validity.valid) {
+          input.removeAttribute('aria-invalid');
+        }
+      });
       showResult(resultContainer, result);
     } catch (error) {
       showError(resultContainer, error instanceof Error ? error.message : 'Terjadi kesalahan yang tidak diketahui.');
